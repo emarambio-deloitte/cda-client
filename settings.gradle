@@ -1,4 +1,3 @@
-// Added since from version 7 onwards gradle requires explicitly plugin fetch location
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -6,5 +5,7 @@ pluginManagement {
         google()
     }
 }
+// Added since from version 7 onwards gradle requires explicitly plugin fetch location
+
 
 rootProject.name = "cloud-data-access-client"
