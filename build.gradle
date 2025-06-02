@@ -18,6 +18,8 @@ mainClassName = "gw.cda.api.CloudDataAccessClient"
 repositories {
   mavenLocal()
   mavenCentral()
+  gradlePluginPortal()
+  google()
 }
 
 dependencies {
