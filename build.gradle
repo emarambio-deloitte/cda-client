@@ -29,9 +29,6 @@ dependencies {
   }
 
   implementation "org.scala-lang:scala-library:$scalaSparkVersion"
-  testImplementation "org.scalatest:scalatest_$scalaSparkVersion:$scalaTestVersion"
-  testImplementation "junit:junit:$jUnitVersion"
-  testImplementation "org.scalamock:scalamock-scalatest-support_$scalaSparkVersion:$scalamockVersion"
   implementation "org.apache.logging.log4j:log4j-api:$log4jVersion"
   implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
   implementation "org.apache.spark:spark-core_$scalaSparkVersion:$sparkVersion"
@@ -48,6 +45,14 @@ dependencies {
   implementation "org.json4s:json4s-native_$scalaSparkVersion:$json4snative"
   implementation "org.json4s:json4s-core_$scalaSparkVersion:$json4score"
   implementation "org.scala-lang:scala-library:$scalaVersion"
+  
+  testImplementation "org.scalatest:scalatest_$scalaSparkVersion:$scalaTestVersion"
+  testImplementation "junit:junit:$jUnitVersion"
+  testImplementation "org.scalamock:scalamock-scalatest-support_$scalaSparkVersion:$scalamockVersion"
+  testImplementation "org.apache.spark:spark-core_$scalaSparkVersion:$sparkVersion"
+  testImplementation "org.apache.spark:spark-sql_$scalaSparkVersion:$sparkVersion"
+  testImplementation "org.json4s:json4s-native_$scalaSparkVersion:$json4snative"
+  testImplementation "org.json4s:json4s-core_$scalaSparkVersion:$json4score"
 }
 
 wrapper {
