@@ -34,8 +34,8 @@ dependencies {
   testImplementation "org.scalamock:scalamock-scalatest-support_$scalaVersion:$scalamockVersion"
   implementation "org.apache.logging.log4j:log4j-api:$log4jVersion"
   implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
-  implementation "org.apache.spark:spark-core_$scalaVersion:$sparkVersion"
-  implementation "org.apache.spark:spark-sql_$scalaVersion:$sparkVersion"
+  implementation "org.apache.spark:spark-core_$scalaSparkVersion:$sparkVersion"
+  implementation "org.apache.spark:spark-sql_$scalaSparkVersion:$sparkVersion"
   implementation "org.apache.hadoop:hadoop-aws:$hadoopAWSVersion"
   implementation "com.fasterxml.jackson.module:jackson-module-scala_$scalaVersion:$jacksonVersion"
   implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonYamlVersion"
@@ -48,7 +48,7 @@ dependencies {
   implementation "org.json4s:json4s-native_$scalaVersion:$json4snative"
   implementation "org.json4s:json4s-core_$scalaVersion:$json4score"
   testRuntimeOnly "org.scala-lang:scala-library:$scalaVersion"
-  testRuntimeOnly "org.apache.spark:spark-core_$scalaVersion:$sparkVersion"
+  testRuntimeOnly "org.apache.spark:spark-core_$scalaSparkVersion:$sparkVersion"
 }
 
 wrapper {
