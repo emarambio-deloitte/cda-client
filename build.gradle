@@ -4,11 +4,6 @@ plugins {
   id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 // Updated shadow version to 8.1.1 to be compatible with JAVA 11
-
-// Added to Daas, make sure gradle compiles with JAVA 11
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
-
 group "$projectGroupId"
 version = "$version"
 
@@ -48,6 +43,8 @@ dependencies {
   implementation "com.microsoft.sqlserver:mssql-jdbc:$sqlserverVersion"
   implementation "org.postgresql:postgresql:$postgresqlVersion"
   implementation "com.oracle.database.jdbc:ojdbc8:$oracleVersion"
+  implementation "org.json4s:json4s-native_$scalaVersion:$json4snative"
+  implementation "org.json4s:json4s-core_$scalaVersion:$json4score"
 }
 
 wrapper {
