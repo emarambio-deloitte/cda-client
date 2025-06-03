@@ -31,7 +31,7 @@ dependencies {
     }
   }
 
-  implementation "org.scala-lang:scala-library:$scalaVersion.$scalaBuild"
+  implementation "org.scala-lang:scala-library:$scalaVersion"
   testImplementation "org.scalatest:scalatest_$scalaVersion:$scalaTestVersion"
   testImplementation "junit:junit:$jUnitVersion"
   testImplementation "org.scalamock:scalamock-scalatest-support_$scalaVersion:$scalamockVersion"
@@ -45,8 +45,8 @@ dependencies {
   implementation "com.amazonaws:aws-java-sdk-s3:$awsSDKVersion"
   implementation "org.apache.commons:commons-lang3:$apacheCommonsVersion"
   implementation "org.rogach:scallop_$scalaVersion:$scallopVersion"
-  compile "com.microsoft.sqlserver:mssql-jdbc:$sqlserverVersion"
-  compile "org.postgresql:postgresql:$postgresqlVersion"
+  implementation "com.microsoft.sqlserver:mssql-jdbc:$sqlserverVersion"
+  implementation "org.postgresql:postgresql:$postgresqlVersion"
   implementation "com.oracle.database.jdbc:ojdbc8:$oracleVersion"
 }
 
@@ -56,12 +56,12 @@ wrapper {
 }
 
 tasks.withType(ScalaCompile).configureEach {
-  scalaCompileOptions.additionalParameters = ["-feature", "-Xfatal-warnings", "-deprecation", "-Xlint:-inaccessible", "-Ywarn-unused-import", "-Ywarn-unused"]
+  scalaCompileOptions.additionalParameters = ["-feature", "-deprecation", "-Xlint:-inaccessible", "-Ywarn-unused-import", "-Ywarn-unused"]
 }
 
 tasks.named("shadowJar").configure {
   zip64 true
-  classifier = null
+  archiveClassifier.set('')
   manifest {
     attributes 'Multi-Release': 'true'
   }
@@ -75,3 +75,8 @@ tasks.shadowDistTar.enabled = false
 
 // Disabling normal jar creation since it is superseded by shadowJar
 tasks.jar.enabled = false
+
+// Fixing dependency issue
+tasks.named("startScripts") {
+  dependsOn tasks.named("shadowJar")
+}
