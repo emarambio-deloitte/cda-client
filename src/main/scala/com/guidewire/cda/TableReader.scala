@@ -17,7 +17,7 @@ import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.functions.when
 
 import java.util.concurrent.atomic.AtomicInteger
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 
 private[cda] case class TableS3BaseLocationInfo(tableName: String,
                                                 baseURI: AmazonS3URI)
