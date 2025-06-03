@@ -244,9 +244,10 @@ class TableReader(clientConfig: ClientConfig) {
         var fingerprintToReturn: Iterable[String] = None: Iterable[String]
        //val firstFingerprintInList = fingerprintsAvailable.toSeq.get(0)
        // Fix on deprecated ToSeq.get(0) function
-        val firstFingerprintInList = fingerprintsAvailable.headOption.getOrElse(
-        throw new IllegalStateException("Expected non-empty list but found empty list")
-        )
+        val firstFingerprintInList = fingerprintsAvailable.headOption match {
+          case Some(value) => value
+          case None => throw new IllegalStateException("Expected non-empty list but found empty list")
+        }
         val nextReadPointKey = if (lastReadPoint.isDefined) { s"${baseUri.getKey}$firstFingerprintInList/${lastReadPoint.get.toLong + 1}"} else { null }
         val listObjectsRequest = new ListObjectsRequest(baseUri.getBucket, s"${baseUri.getKey}$firstFingerprintInList/", nextReadPointKey, "/", null)
         val objectList = S3ClientSupplier.s3Client.listObjects(listObjectsRequest)
