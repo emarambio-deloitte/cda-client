@@ -15,7 +15,6 @@ import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.functions.when
-import scala.jdk.CollectionConverters._
 import scala.util.matching.Regex
 
 import java.util.concurrent.atomic.AtomicInteger
