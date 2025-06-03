@@ -15,6 +15,8 @@ import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.functions.when
+import scala.jdk.CollectionConverters._
+import scala.util.matching.Regex
 
 import java.util.concurrent.atomic.AtomicInteger
 import scala.collection.JavaConverters._
@@ -241,7 +243,11 @@ class TableReader(clientConfig: ClientConfig) {
         fingerprintsAvailable
       } else {
         var fingerprintToReturn: Iterable[String] = None: Iterable[String]
-        val firstFingerprintInList = fingerprintsAvailable.toSeq.get(0)
+       //val firstFingerprintInList = fingerprintsAvailable.toSeq.get(0)
+       // Fix on deprecated ToSeq.get(0) function
+        val firstFingerprintInList = fingerprintsAvailable.headOption.getOrElse(
+        throw new IllegalStateException("Expected non-empty list but found empty list")
+        )
         val nextReadPointKey = if (lastReadPoint.isDefined) { s"${baseUri.getKey}$firstFingerprintInList/${lastReadPoint.get.toLong + 1}"} else { null }
         val listObjectsRequest = new ListObjectsRequest(baseUri.getBucket, s"${baseUri.getKey}$firstFingerprintInList/", nextReadPointKey, "/", null)
         val objectList = S3ClientSupplier.s3Client.listObjects(listObjectsRequest)
@@ -386,11 +392,14 @@ class TableReader(clientConfig: ClientConfig) {
       while (objectLists.last.isTruncated) {
         objectLists = objectLists :+ S3ClientSupplier.s3Client.listNextBatchOfObjects(objectLists.last)
       }
-      val timestampSubfolderKeys = objectLists.flatMap(_.getCommonPrefixes)
+      val timestampSubfolderKeys = objectLists.flatMap(_.getCommonPrefixes.asScala)
       timestampSubfolderKeys.map(timestampSubfolderKey => {
         val timestampSubfolderURI = new AmazonS3URI(s"s3://${s3URI.getBucket}/$timestampSubfolderKey")
         val timestampPattern = ".+\\/([0-9]+)\\/$".r
-        val timestampPattern(timestamp) = timestampSubfolderKey
+        val timestamp = timestampPattern.findFirstMatchIn(timestampSubfolderKey) match {
+          case Some(m) => m.group(1).toLong
+          case None => throw new IllegalStateException(s"Regex did not match for key: $timestampSubfolderKey")
+        }
         TableS3LocationWithTimestampInfo(tableInfo.tableName, fingerprint, timestampSubfolderURI, timestamp.toLong)
       })
     })
