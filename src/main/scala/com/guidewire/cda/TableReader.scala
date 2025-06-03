@@ -15,7 +15,6 @@ import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.lit
 import org.apache.spark.sql.functions.when
-import scala.util.matching.Regex
 
 import java.util.concurrent.atomic.AtomicInteger
 import scala.collection.JavaConverters._
@@ -255,7 +254,11 @@ class TableReader(clientConfig: ClientConfig) {
         if(numberOfTimestampFoldersRemaining>0) {
           fingerprintToReturn=fingerprintsAvailable.iterator.toIterable.filter(_==firstFingerprintInList)
         } else {
-          val secondFingerprintInList = fingerprintsAvailable.toSeq.get(1)
+          //val secondFingerprintInList = fingerprintsAvailable.toSeq.get(1)
+          val secondFingerprintInList = fingerprintsAvailable.drop(1).headOption match {
+            case Some(value) => value
+            case None => throw new IllegalStateException("Expected at least two elements but found less")
+          }
           fingerprintToReturn=fingerprintsAvailable.iterator.toIterable.filter(_==secondFingerprintInList)
         }
         fingerprintToReturn
