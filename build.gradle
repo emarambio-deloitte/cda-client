@@ -8,7 +8,9 @@ group "$projectGroupId"
 version = "$version"
 
 description = """Cloud Data Access Client"""
-mainClassName = "gw.cda.api.CloudDataAccessClient"
+application {
+    mainClass = "gw.cda.api.CloudDataAccessClient"
+}
 
 repositories {
   mavenLocal()
