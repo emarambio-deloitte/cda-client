@@ -45,7 +45,8 @@ dependencies {
   implementation "com.oracle.database.jdbc:ojdbc8:$oracleVersion"
   implementation "org.scala-lang:scala-library:$scalaVersion"
   implementation "org.apache.hadoop:hadoop-common:$hadoopcommon"
-  
+
+  testImplementation "org.scalatestplus:junit-4-13_$scalaSparkVersion:$scalaTestVersion"
   testImplementation "org.scalatest:scalatest_$scalaSparkVersion:$scalaTestVersion"
   testImplementation "junit:junit:$jUnitVersion"
   testImplementation "org.scalamock:scalamock-scalatest-support_$scalaSparkVersion:$scalamockVersion"
@@ -82,4 +83,11 @@ tasks.jar.enabled = false
 // Fixing dependency issue
 tasks.named("startScripts") {
   dependsOn tasks.named("shadowJar")
+}
+
+test {
+  useJUnit()
+  testLogging {
+    events "passed", "skipped", "failed"
+  }
 }
