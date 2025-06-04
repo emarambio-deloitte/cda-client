@@ -6,8 +6,8 @@ import java.io.IOException
 import com.guidewire.cda.specs.CDAClientTestSpec
 import org.apache.commons.io.FileUtils
 import org.junit.runner.RunWith
-import org.scalatestplus.junit.JUnitRunner
-//import org.scalatest.junit.JUnitRunner
+//import org.scalatestplus.junit.JUnitRunner
+import org.scalatest.junit.JUnitRunner
 
 import scala.io.Source
 
