@@ -2,6 +2,7 @@ plugins {
   id "scala"
   id "application"
   id "com.github.johnrengelman.shadow" version "8.1.1"
+  id "java"
 }
 // Updated shadow version to 8.1.1 to be compatible with JAVA 11
 group "$projectGroupId"
@@ -45,6 +46,7 @@ dependencies {
   implementation "org.json4s:json4s-native_$scalaSparkVersion:$json4snative"
   implementation "org.json4s:json4s-core_$scalaSparkVersion:$json4score"
   implementation "org.scala-lang:scala-library:$scalaVersion"
+  implementation "org.apache.hadoop:hadoop-common:$hadoopcommon"
   
   testImplementation "org.scalatest:scalatest_$scalaSparkVersion:$scalaTestVersion"
   testImplementation "junit:junit:$jUnitVersion"
