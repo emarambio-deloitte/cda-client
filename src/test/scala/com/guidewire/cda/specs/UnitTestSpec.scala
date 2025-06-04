@@ -5,8 +5,8 @@ import org.junit.runner.RunWith
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.BeforeAndAfter
 import org.scalatest.BeforeAndAfterAll
-import org.scalatest.FunSpec
-import org.scalatest.Matchers
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.prop.TableDrivenPropertyChecks
 
@@ -51,7 +51,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks
   *
   */
 @RunWith(classOf[JUnitRunner])
-abstract class UnitTestSpec extends FunSpec with TableDrivenPropertyChecks with Matchers with BeforeAndAfter with BeforeAndAfterAll with MockFactory {
+abstract class UnitTestSpec extends AnyFunSpec with TableDrivenPropertyChecks with Matchers with BeforeAndAfter with BeforeAndAfterAll with MockFactory {
 
   override def beforeAll(): Unit = {
     if (SparkSession.getActiveSession.isDefined) {
