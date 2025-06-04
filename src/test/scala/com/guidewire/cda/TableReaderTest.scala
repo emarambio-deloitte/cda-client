@@ -14,7 +14,8 @@ import org.apache.spark.sql.types.StructField
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.DataFrame
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import org.scalatestplus.junit.JUnitRunner
+//import org.scalatest.junit.JUnitRunner
 
 import scala.io.Source
 import scala.util.Random

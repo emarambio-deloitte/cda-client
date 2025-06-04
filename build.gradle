@@ -46,7 +46,7 @@ dependencies {
   implementation "org.scala-lang:scala-library:$scalaVersion"
   implementation "org.apache.hadoop:hadoop-common:$hadoopcommon"
 
-  testImplementation "org.scalatestplus:junit-4-13_$scalaSparkVersion:$scalaTestVersion"
+  testImplementation "org.scalatestplus:junit-4-13_$scalaSparkVersion:$scalaTestVersionJunit"
   testImplementation "org.scalatest:scalatest_$scalaSparkVersion:$scalaTestVersion"
   testImplementation "junit:junit:$jUnitVersion"
   testImplementation "org.scalamock:scalamock-scalatest-support_$scalaSparkVersion:$scalamockVersion"
@@ -90,4 +90,5 @@ test {
   testLogging {
     events "passed", "skipped", "failed"
   }
+  //systemProperty "hadoop.native.lib", "false" // Add this line to disable native libs globally
 }
