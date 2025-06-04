@@ -13,13 +13,13 @@ import org.apache.spark.sql.types.StringType
 import org.apache.spark.sql.types.StructField
 import org.apache.spark.sql.types.StructType
 import org.apache.spark.sql.DataFrame
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+//import org.junit.runner.RunWith
+//import org.scalatest.junit.JUnitRunner
 
 import scala.io.Source
 import scala.util.Random
 
-@RunWith(classOf[JUnitRunner])
+//@RunWith(classOf[JUnitRunner])
 class TableReaderTest extends CDAClientTestSpec {
 
   def makeDummyDataFrame(letters: String, numbers: Range): DataFrame = {

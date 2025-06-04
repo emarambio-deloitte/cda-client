@@ -5,12 +5,12 @@ import java.io.IOException
 
 import com.guidewire.cda.specs.CDAClientTestSpec
 import org.apache.commons.io.FileUtils
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+//import org.junit.runner.RunWith
+//import org.scalatest.junit.JUnitRunner
 
 import scala.io.Source
 
-@RunWith(classOf[JUnitRunner])
+//@RunWith(classOf[JUnitRunner])
 class SavepointsProcessorTest extends CDAClientTestSpec {
 
   private val tempDir = System.getProperty("java.io.tmpdir") //This will be an OS specific temp dir, with a "/" at the end

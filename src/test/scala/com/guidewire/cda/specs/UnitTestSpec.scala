@@ -1,13 +1,13 @@
 package com.guidewire.cda.specs
 
 import org.apache.spark.sql.SparkSession
-import org.junit.runner.RunWith
+//import org.junit.runner.RunWith
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.BeforeAndAfter
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.funspec.AnyFunSpec
 import org.scalatest.matchers.should.Matchers
-import org.scalatest.junit.JUnitRunner
+//import org.scalatest.junit.JUnitRunner
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 /**
@@ -50,7 +50,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks
   * </pre>
   *
   */
-@RunWith(classOf[JUnitRunner])
+//@RunWith(classOf[JUnitRunner])
 abstract class UnitTestSpec extends AnyFunSpec with TableDrivenPropertyChecks with Matchers with BeforeAndAfter with BeforeAndAfterAll with MockFactory {
 
   override def beforeAll(): Unit = {
