@@ -43,8 +43,6 @@ dependencies {
   implementation "com.microsoft.sqlserver:mssql-jdbc:$sqlserverVersion"
   implementation "org.postgresql:postgresql:$postgresqlVersion"
   implementation "com.oracle.database.jdbc:ojdbc8:$oracleVersion"
-  implementation "org.json4s:json4s-native_$scalaSparkVersion:$json4snative"
-  implementation "org.json4s:json4s-core_$scalaSparkVersion:$json4score"
   implementation "org.scala-lang:scala-library:$scalaVersion"
   implementation "org.apache.hadoop:hadoop-common:$hadoopcommon"
   
@@ -53,8 +51,6 @@ dependencies {
   testImplementation "org.scalamock:scalamock-scalatest-support_$scalaSparkVersion:$scalamockVersion"
   testImplementation "org.apache.spark:spark-core_$scalaSparkVersion:$sparkVersion"
   testImplementation "org.apache.spark:spark-sql_$scalaSparkVersion:$sparkVersion"
-  testImplementation "org.json4s:json4s-native_$scalaSparkVersion:$json4snative"
-  testImplementation "org.json4s:json4s-core_$scalaSparkVersion:$json4score"
 }
 
 wrapper {
