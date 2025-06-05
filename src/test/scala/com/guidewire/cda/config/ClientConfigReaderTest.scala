@@ -1,11 +1,11 @@
 package com.guidewire.cda.config
 
 import com.guidewire.cda.specs.CDAClientTestSpec
-import org.junit.runner.RunWith
+//import org.junit.runner.RunWith
 //import org.scalatest.junit.JUnitRunner
-import org.scalatestplus.junit.JUnitRunner
+//import org.scalatestplus.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
+//@RunWith(classOf[JUnitRunner])
 class ClientConfigReaderTest extends CDAClientTestSpec {
 
   describe("Testing ConfigReader functionality") {

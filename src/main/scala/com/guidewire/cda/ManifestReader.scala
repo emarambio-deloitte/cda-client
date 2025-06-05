@@ -45,7 +45,8 @@ object ManifestReader {
     // Convert each entry in the manifest to a ManifestEntry class
     val manifest = parsedManifest.mapValues(ObjectMapperSupplier.jsonMapper.convertValue(_, classOf[ManifestEntry]))
     log.info(s"Successfully parsed manifest JSON file")
-    manifest
+    //manifest
+    manifest.-("heartbeat")
   }
 
   /** Fetch manifest.json file from s3 as a string based on parameters from config file
