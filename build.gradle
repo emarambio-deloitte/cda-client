@@ -88,6 +88,12 @@ tasks.named("startScripts") {
 
 test {
   useJUnit()
+
+  // Passa explicitamente o HADOOP_HOME e atualiza o PATH
+  environment "HADOOP_HOME", "C:\\Users\\lucunha\\Documents\\cda-client\\gradle\\wrapper"
+  environment "PATH", System.getenv("PATH") + ";C:\\Users\\lucunha\\Documents\\cda-client\\gradle\\wrapper\\bin"
+
+
   testLogging {
     events "passed", "skipped", "failed"
   }
