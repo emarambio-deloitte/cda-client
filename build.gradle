@@ -35,6 +35,7 @@ dependencies {
   implementation "org.apache.spark:spark-core_$scalaSparkVersion:$sparkVersion"
   implementation "org.apache.spark:spark-sql_$scalaSparkVersion:$sparkVersion"
   implementation "org.apache.hadoop:hadoop-aws:$hadoopAWSVersion"
+  implementation "org.apache.hadoop:hadoop-common:$hadoopcommon"
   implementation "com.fasterxml.jackson.module:jackson-module-scala_$scalaSparkVersion:$jacksonVersion"
   implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonYamlVersion"
   implementation "com.amazonaws:aws-java-sdk-s3:$awsSDKVersion"
@@ -60,7 +61,7 @@ wrapper {
 }
 
 tasks.withType(ScalaCompile).configureEach {
-  scalaCompileOptions.additionalParameters = ["-feature", "-deprecation", "-Xlint:-inaccessible", "-Ywarn-unused-import", "-Ywarn-unused"]
+  scalaCompileOptions.additionalParameters = ["-feature", "-deprecation", "-Xlint:unused"]
 }
 
 tasks.named("shadowJar").configure {
@@ -90,5 +91,5 @@ test {
   testLogging {
     events "passed", "skipped", "failed"
   }
-  //systemProperty "hadoop.native.lib", "false" // Add this line to disable native libs globally
+  
 }
