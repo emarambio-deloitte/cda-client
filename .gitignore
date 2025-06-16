@@ -89,3 +89,6 @@ __pycache__/
 
 # Exclude Gradle wrapper
 !/gradle/wrapper/gradle-wrapper.jar
+
+# Exclude Gradle wrapper
+!/jdbc/ojdbc11.jar
