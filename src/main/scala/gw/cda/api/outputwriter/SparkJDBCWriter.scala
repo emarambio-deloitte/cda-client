@@ -89,7 +89,7 @@ private[outputwriter] class SparkJDBCWriter(override val clientConfig: ClientCon
       tableDataframe.write
         .format("jdbc")
         .mode(saveMode)
-        .option("driver", "org.postgresql.Driver")
+        .option("driver", "oracle.jdbc.OracleDriver")
         .option("url", connectionConfig.jdbcUrl)
         .option("dbtable", tableName)
         .option("user", connectionConfig.jdbcUsername)
